@@ -565,7 +565,6 @@ def test_auto_review_with_default_regex(self, sql_command):
     result = audit.is_auto_review()
     assert result is False
 
-
 def test_get_review_info(
     sql_query_apply,
     resource_group,
