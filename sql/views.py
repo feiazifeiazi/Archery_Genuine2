@@ -86,7 +86,7 @@ def twofa(request):
             auth_type = {}
             auth_type["code"] = user_auth_type
             if user_auth_type == "totp":
-                auth_type["display"] = "Google身份验证器"
+                auth_type["display"] = "TOTP算法身份验证器(Google身份验证器)"
             elif user_auth_type == "sms":
                 auth_type["display"] = "短信验证码"
             auth_types.append(auth_type)
