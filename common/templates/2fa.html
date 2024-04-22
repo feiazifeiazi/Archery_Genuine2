@@ -30,13 +30,13 @@
                     <select id="auth_type" class="form-control show-tick selectpicker" name="auth_type"
                             title="选择额外验证方式:"
                             data-live-search="true">
-                        <option value="totp" selected="selected">Google身份验证器</option>
+                        <option value="totp" selected="selected">TOTP算法身份验证器(Google身份验证器)</option>
                         <option value="sms">短信验证码</option>
                     </select>
                 </div>
 
                 <div id="totp-form" class="form-group" style="display: grid">
-                    <label class="control-label" for="qrcode-img">1. 使用Google身份验证器扫码：</label>
+                    <label class="control-label" for="qrcode-img">1. 使用Microsoft或Google身份验证器扫码：</label>
                     <img id="qrcode-img" key="" src="" style="width: 100%;height: auto;">
                 </div>
                 <div id="sms-form" class="form-group" style="display:none;">
