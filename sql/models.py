@@ -79,7 +79,7 @@ class TwoFactorAuthConfig(models.Model):
     """
 
     auth_type_choice = (
-        ("totp", "Google身份验证器"),
+        ("totp", "TOTP算法身份验证器(Google身份验证器)"),
         ("sms", "短信验证码"),
     )
 
