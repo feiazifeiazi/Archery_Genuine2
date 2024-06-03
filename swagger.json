@@ -1,0 +1,3852 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Database Monitor Platform API-数据库监控平台-接口文档"
+  },
+  "paths": {
+    "/api/v{version}/ClustersGroupInfo/SelectUrl": {
+      "get": {
+        "tags": [
+          "ClustersGroupInfo"
+        ],
+        "summary": "获取DB集群的地址信息。返回对象:ClustersGroupInfoUrlDto",
+        "parameters": [
+          {
+            "name": "Search",
+            "in": "query",
+            "description": "查询条件(多字段查找：集群名称，地址、IP，端口等)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "AppName",
+            "in": "query",
+            "description": "应用程序名称",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "PageIndex",
+            "in": "query",
+            "description": "页码",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "description": "每页大小",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "返回的集群地址基础信息数据",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClustersGroupInfoUrlDtoIListPagedModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClustersGroupInfoUrlDtoIListPagedModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClustersGroupInfoUrlDtoIListPagedModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/ClustersGroupInfo/Select": {
+      "get": {
+        "tags": [
+          "ClustersGroupInfo"
+        ],
+        "summary": "获取DB集群的基本信息",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "查询条件(多字段查找：集群名称、机房)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "查询参数",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClustersGroupInfoSPDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClustersGroupInfoSPDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClustersGroupInfoSPDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClustersGroupInfoSPDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "返回的服务基础信息数据",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClustersGroupInfo2DtoIListPagedModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClustersGroupInfo2DtoIListPagedModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClustersGroupInfo2DtoIListPagedModel"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ClustersGroupInfo"
+        ],
+        "summary": "获取DB集群的基本信息",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "查询条件(多字段查找：集群名称、机房)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "查询参数",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClustersGroupInfoSPDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClustersGroupInfoSPDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClustersGroupInfoSPDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClustersGroupInfoSPDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "返回的服务基础信息数据",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClustersGroupInfo2DtoIListPagedModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClustersGroupInfo2DtoIListPagedModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClustersGroupInfo2DtoIListPagedModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/DataArchive/DropPartition": {
+      "get": {
+        "tags": [
+          "DataArchive"
+        ],
+        "summary": "删除分区",
+        "parameters": [
+          {
+            "name": "tableName",
+            "in": "query",
+            "description": "表名",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "daysToKeep",
+            "in": "query",
+            "description": "保留最近几天的数据，删除早于这些天的数据分区",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/DbMonitorRecord/Save": {
+      "post": {
+        "tags": [
+          "DbMonitorRecord"
+        ],
+        "summary": "保存 kv",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DbMonitorTaskRecordModel"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DbMonitorTaskRecordModel"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DbMonitorTaskRecordModel"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DbMonitorTaskRecordModel"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/DbMonitorTask/GetDBLinkConfigList": {
+      "post": {
+        "tags": [
+          "DbMonitorTask"
+        ],
+        "summary": "获取监控列表",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetDBLinkConfigListRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetDBLinkConfigListRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetDBLinkConfigListRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetDBLinkConfigListRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/DbMonitorTask/UpdateExecInfo": {
+      "post": {
+        "tags": [
+          "DbMonitorTask"
+        ],
+        "summary": "修改监控任务执行信息-执行的次数。最后时间更新",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/UpdateExecInfoRequest"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/UpdateExecInfoRequest"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/UpdateExecInfoRequest"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/UpdateExecInfoRequest"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/DBMonitorTaskCommon/ExecuteForSql": {
+      "post": {
+        "tags": [
+          "DBMonitorTaskCommon"
+        ],
+        "summary": "执行SQL",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StringObjectIDictionaryDBMonitorTaskCommonExecuteForSqlData"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StringObjectIDictionaryDBMonitorTaskCommonExecuteForSqlData"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StringObjectIDictionaryDBMonitorTaskCommonExecuteForSqlData"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StringObjectIDictionaryDBMonitorTaskCommonExecuteForSqlData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "tags": [
+          "Home"
+        ],
+        "operationId": "/",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Home"
+        ],
+        "operationId": "/post",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/JobResult/Save": {
+      "post": {
+        "tags": [
+          "JobResult"
+        ],
+        "summary": "保存 kv",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/JobResultModel"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/JobResultModel"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/JobResultModel"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/JobResultModel"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/KVInfo/Save": {
+      "post": {
+        "tags": [
+          "KVInfo"
+        ],
+        "summary": "保存 kv",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/KvInfoData"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/KvInfoData"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/KvInfoData"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/KvInfoData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/ServerBasicInfo/Select": {
+      "get": {
+        "tags": [
+          "ServerBasicInfo"
+        ],
+        "summary": "获取DB服务的基本信息",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "查询条件(多字段查找：集群名称、机房、库名等)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "查询条件对象",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServerBasicInfoSPDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServerBasicInfoSPDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServerBasicInfoSPDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServerBasicInfoSPDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "返回的服务基础信息数据",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerBasicInfo2DtoIListPagedModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerBasicInfo2DtoIListPagedModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerBasicInfo2DtoIListPagedModel"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ServerBasicInfo"
+        ],
+        "summary": "获取DB服务的基本信息",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "查询条件(多字段查找：集群名称、机房、库名等)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "查询条件对象",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServerBasicInfoSPDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServerBasicInfoSPDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServerBasicInfoSPDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServerBasicInfoSPDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "返回的服务基础信息数据",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerBasicInfo2DtoIListPagedModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerBasicInfo2DtoIListPagedModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerBasicInfo2DtoIListPagedModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/Users/Authenticate": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "用户鉴权",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticateUserInfoRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticateUserInfoRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticateUserInfoRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticateUserInfoRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/Users/GetAll": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "获取当前用户",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v{version}/Users/Save": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "新增用户",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Values": {
+      "get": {
+        "tags": [
+          "Values"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Values"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Values/{id}": {
+      "get": {
+        "tags": [
+          "Values"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Values"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Values"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/WeatherForecast": {
+      "get": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "operationId": "GetWeatherForecast",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AuthenticateUserInfoRequest": {
+        "required": [
+          "accessKeyId",
+          "accessKeySecret"
+        ],
+        "type": "object",
+        "properties": {
+          "accessKeyId": {
+            "type": "string",
+            "description": "AK(用户名)"
+          },
+          "accessKeySecret": {
+            "type": "string",
+            "description": "SK(密码)"
+          }
+        },
+        "additionalProperties": false,
+        "description": "鉴权-用户信息"
+      },
+      "AuthenticateUserInfoRequest-鉴权-用户信息": {
+        "required": [
+          "accessKeyId",
+          "accessKeySecret"
+        ],
+        "type": "object",
+        "properties": {
+          "accessKeyId": {
+            "type": "string",
+            "description": "AK(用户名)"
+          },
+          "accessKeySecret": {
+            "type": "string",
+            "description": "SK(密码)"
+          }
+        },
+        "additionalProperties": false,
+        "description": "鉴权-用户信息"
+      },
+      "ClustersGroupInfo2Dto": {
+        "type": "object",
+        "properties": {
+          "rowNumber": {
+            "type": "integer",
+            "description": "序号",
+            "format": "int32"
+          },
+          "clustersGroupId": {
+            "type": "string",
+            "description": "集群ID",
+            "nullable": true
+          },
+          "clustersGroupName": {
+            "type": "string",
+            "description": "集群名称",
+            "nullable": true
+          },
+          "computerRoomNameOfCluster": {
+            "type": "string",
+            "description": "集群-机房名称",
+            "nullable": true
+          },
+          "clustersAGURL": {
+            "type": "string",
+            "description": "集群-访问域名",
+            "nullable": true
+          },
+          "clustersAGVIP": {
+            "type": "string",
+            "description": "集群-访问IP",
+            "nullable": true
+          },
+          "clusterPort": {
+            "type": "integer",
+            "description": "端口",
+            "format": "int32"
+          },
+          "slaveServerDomainName": {
+            "type": "string",
+            "description": "从机-域名",
+            "nullable": true
+          },
+          "slavePort": {
+            "type": "integer",
+            "description": "从机-端口",
+            "format": "int32"
+          },
+          "appCode": {
+            "type": "string",
+            "description": "关联的应用程序名称，多个以逗号隔开",
+            "nullable": true
+          },
+          "countryName": {
+            "type": "string",
+            "description": "业务国家",
+            "nullable": true
+          },
+          "createTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          },
+          "updateTime": {
+            "type": "string",
+            "description": "修改时间",
+            "format": "date-time"
+          },
+          "environmentCode": {
+            "type": "string",
+            "description": "环境编码",
+            "nullable": true
+          },
+          "environmentName": {
+            "type": "string",
+            "description": "环境名称",
+            "nullable": true
+          },
+          "clustersAGVIPProxy": {
+            "type": "string",
+            "nullable": true
+          },
+          "clusterPortProxy": {
+            "type": "string",
+            "nullable": true
+          },
+          "levelImpt": {
+            "type": "string",
+            "nullable": true
+          },
+          "isHasServer": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isLodge": {
+            "type": "integer",
+            "description": "是否寄宿",
+            "format": "int32"
+          },
+          "serverCount": {
+            "type": "integer",
+            "description": "服务数量",
+            "format": "int32"
+          },
+          "execFailCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "execSuccessCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lastExecTimeMin": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastExecTimeMax": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "taskCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "backup_count": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "backup_size_gb": {
+            "type": "number",
+            "format": "double"
+          },
+          "backup_name_last": {
+            "type": "string",
+            "nullable": true
+          },
+          "backup_time_min": {
+            "type": "number",
+            "format": "double"
+          },
+          "backup_begin_time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "backup_end_time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dbServiceTypeNameOfServer": {
+            "type": "string",
+            "description": "服务名称",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ClustersGroupInfo2DtoIListPagedModel": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean",
+            "description": "是否成功。"
+          },
+          "message": {
+            "type": "string",
+            "description": "返回的消息",
+            "nullable": true
+          },
+          "resultCode": {
+            "type": "integer",
+            "description": "返回的操作码",
+            "format": "int32"
+          },
+          "resultInt": {
+            "type": "integer",
+            "description": "返回的结果(int属性)ResultInt",
+            "format": "int32",
+            "nullable": true
+          },
+          "responseTime": {
+            "type": "string",
+            "description": "响应时间",
+            "format": "date-time"
+          },
+          "isFromCache": {
+            "type": "boolean",
+            "description": "是否来自缓存",
+            "nullable": true
+          },
+          "attribute01": {
+            "type": "string",
+            "description": "返回的自定义属性值",
+            "nullable": true
+          },
+          "attribute02": {
+            "type": "string",
+            "description": "返回的自定义属性值",
+            "nullable": true
+          },
+          "attributeInt01": {
+            "type": "integer",
+            "description": "返回的自定义属性值-int01",
+            "format": "int32",
+            "nullable": true
+          },
+          "attributeInt02": {
+            "type": "integer",
+            "description": "返回的自定义属性值-int 02",
+            "format": "int32",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ClustersGroupInfo2Dto"
+            },
+            "description": "返回的自定义数据",
+            "nullable": true
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "每页显示记录",
+            "format": "int32"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "description": "当前页码",
+            "format": "int32"
+          },
+          "totalCount": {
+            "type": "integer",
+            "description": "总条数",
+            "format": "int32"
+          },
+          "totalPage": {
+            "type": "integer",
+            "description": "总页数",
+            "format": "int32",
+            "readOnly": true
+          },
+          "isPreviousPage": {
+            "type": "boolean",
+            "description": "是否有上一页",
+            "readOnly": true
+          },
+          "isNextPage": {
+            "type": "boolean",
+            "description": "是否有下一页",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "API返回的具有分页的实体。"
+      },
+      "ClustersGroupInfo2DtoIListPagedModel-API返回的具有分页的实体。": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean",
+            "description": "是否成功。"
+          },
+          "message": {
+            "type": "string",
+            "description": "返回的消息",
+            "nullable": true
+          },
+          "resultCode": {
+            "type": "integer",
+            "description": "返回的操作码",
+            "format": "int32"
+          },
+          "resultInt": {
+            "type": "integer",
+            "description": "返回的结果(int属性)ResultInt",
+            "format": "int32",
+            "nullable": true
+          },
+          "responseTime": {
+            "type": "string",
+            "description": "响应时间",
+            "format": "date-time"
+          },
+          "isFromCache": {
+            "type": "boolean",
+            "description": "是否来自缓存",
+            "nullable": true
+          },
+          "attribute01": {
+            "type": "string",
+            "description": "返回的自定义属性值",
+            "nullable": true
+          },
+          "attribute02": {
+            "type": "string",
+            "description": "返回的自定义属性值",
+            "nullable": true
+          },
+          "attributeInt01": {
+            "type": "integer",
+            "description": "返回的自定义属性值-int01",
+            "format": "int32",
+            "nullable": true
+          },
+          "attributeInt02": {
+            "type": "integer",
+            "description": "返回的自定义属性值-int 02",
+            "format": "int32",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ClustersGroupInfo2Dto"
+            },
+            "description": "返回的自定义数据",
+            "nullable": true
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "每页显示记录",
+            "format": "int32"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "description": "当前页码",
+            "format": "int32"
+          },
+          "totalCount": {
+            "type": "integer",
+            "description": "总条数",
+            "format": "int32"
+          },
+          "totalPage": {
+            "type": "integer",
+            "description": "总页数",
+            "format": "int32",
+            "readOnly": true
+          },
+          "isPreviousPage": {
+            "type": "boolean",
+            "description": "是否有上一页",
+            "readOnly": true
+          },
+          "isNextPage": {
+            "type": "boolean",
+            "description": "是否有下一页",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "API返回的具有分页的实体。"
+      },
+      "ClustersGroupInfoSPDto": {
+        "type": "object",
+        "properties": {
+          "search": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "查询条件(多字段查找：集群名称、机房、库名等)",
+            "nullable": true
+          },
+          "pageIndex": {
+            "type": "integer",
+            "description": "页码",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "每页大小",
+            "format": "int32"
+          },
+          "dbServiceType": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "服务类型",
+            "nullable": true
+          },
+          "isBoarding": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "是否寄宿",
+            "nullable": true
+          },
+          "startCreateTime": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "开始时间",
+            "nullable": true
+          },
+          "endCreateTime": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "结束时间",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "查询条件(SelectParameter)Dto"
+      },
+      "ClustersGroupInfoSPDto-查询条件(SelectParameter)Dto": {
+        "type": "object",
+        "properties": {
+          "search": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "查询条件(多字段查找：集群名称、机房、库名等)",
+            "nullable": true
+          },
+          "pageIndex": {
+            "type": "integer",
+            "description": "页码",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "每页大小",
+            "format": "int32"
+          },
+          "dbServiceType": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "服务类型",
+            "nullable": true
+          },
+          "isBoarding": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "是否寄宿",
+            "nullable": true
+          },
+          "startCreateTime": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "开始时间",
+            "nullable": true
+          },
+          "endCreateTime": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "结束时间",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "查询条件(SelectParameter)Dto"
+      },
+      "ClustersGroupInfoUrlDto": {
+        "type": "object",
+        "properties": {
+          "rowNumber": {
+            "type": "integer",
+            "description": "序号",
+            "format": "int32"
+          },
+          "clustersGroupId": {
+            "type": "string",
+            "description": "集群ID",
+            "nullable": true
+          },
+          "clustersGroupName": {
+            "type": "string",
+            "description": "集群名称",
+            "nullable": true
+          },
+          "clustersUrl": {
+            "type": "string",
+            "description": "集群-访问域名",
+            "nullable": true
+          },
+          "clustersIp": {
+            "type": "string",
+            "description": "集群-访问IP",
+            "nullable": true
+          },
+          "clustersPort": {
+            "type": "integer",
+            "description": "集群-端口",
+            "format": "int32"
+          },
+          "slaveServerDomainName": {
+            "type": "string",
+            "description": "从机-域名",
+            "nullable": true
+          },
+          "slaveServerIp": {
+            "type": "string",
+            "description": "从机-IP地址",
+            "nullable": true
+          },
+          "slavePort": {
+            "type": "integer",
+            "description": "从机-端口",
+            "format": "int32"
+          },
+          "slaveServerDomainName02": {
+            "type": "string",
+            "description": "从机-域名02",
+            "nullable": true
+          },
+          "slaveServerIp02": {
+            "type": "string",
+            "description": "从机-IP地址",
+            "nullable": true
+          },
+          "slavePort02": {
+            "type": "integer",
+            "description": "从机-端口02",
+            "format": "int32"
+          },
+          "appCode": {
+            "type": "string",
+            "description": "关联的应用程序名称，多个以逗号隔开",
+            "nullable": true
+          },
+          "computerRoomNameOfCluster": {
+            "type": "string",
+            "description": "集群-机房名称",
+            "nullable": true
+          },
+          "dbServiceTypeCode": {
+            "type": "integer",
+            "description": "DB类型 编码",
+            "format": "int32"
+          },
+          "dbServiceTypeNameOfCluster": {
+            "type": "string",
+            "description": "集群-DB类型 名称",
+            "nullable": true
+          },
+          "createTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          },
+          "updateTime": {
+            "type": "string",
+            "description": "修改时间",
+            "format": "date-time"
+          },
+          "environmentCode": {
+            "type": "integer",
+            "description": "环境编码",
+            "format": "int32"
+          },
+          "environmentName": {
+            "type": "string",
+            "description": "环境名称",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "集群地址信息"
+      },
+      "ClustersGroupInfoUrlDto-集群地址信息": {
+        "type": "object",
+        "properties": {
+          "rowNumber": {
+            "type": "integer",
+            "description": "序号",
+            "format": "int32"
+          },
+          "clustersGroupId": {
+            "type": "string",
+            "description": "集群ID",
+            "nullable": true
+          },
+          "clustersGroupName": {
+            "type": "string",
+            "description": "集群名称",
+            "nullable": true
+          },
+          "clustersUrl": {
+            "type": "string",
+            "description": "集群-访问域名",
+            "nullable": true
+          },
+          "clustersIp": {
+            "type": "string",
+            "description": "集群-访问IP",
+            "nullable": true
+          },
+          "clustersPort": {
+            "type": "integer",
+            "description": "集群-端口",
+            "format": "int32"
+          },
+          "slaveServerDomainName": {
+            "type": "string",
+            "description": "从机-域名",
+            "nullable": true
+          },
+          "slaveServerIp": {
+            "type": "string",
+            "description": "从机-IP地址",
+            "nullable": true
+          },
+          "slavePort": {
+            "type": "integer",
+            "description": "从机-端口",
+            "format": "int32"
+          },
+          "slaveServerDomainName02": {
+            "type": "string",
+            "description": "从机-域名02",
+            "nullable": true
+          },
+          "slaveServerIp02": {
+            "type": "string",
+            "description": "从机-IP地址",
+            "nullable": true
+          },
+          "slavePort02": {
+            "type": "integer",
+            "description": "从机-端口02",
+            "format": "int32"
+          },
+          "appCode": {
+            "type": "string",
+            "description": "关联的应用程序名称，多个以逗号隔开",
+            "nullable": true
+          },
+          "computerRoomNameOfCluster": {
+            "type": "string",
+            "description": "集群-机房名称",
+            "nullable": true
+          },
+          "dbServiceTypeCode": {
+            "type": "integer",
+            "description": "DB类型 编码",
+            "format": "int32"
+          },
+          "dbServiceTypeNameOfCluster": {
+            "type": "string",
+            "description": "集群-DB类型 名称",
+            "nullable": true
+          },
+          "createTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          },
+          "updateTime": {
+            "type": "string",
+            "description": "修改时间",
+            "format": "date-time"
+          },
+          "environmentCode": {
+            "type": "integer",
+            "description": "环境编码",
+            "format": "int32"
+          },
+          "environmentName": {
+            "type": "string",
+            "description": "环境名称",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "集群地址信息"
+      },
+      "ClustersGroupInfoUrlDtoIListPagedModel": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean",
+            "description": "是否成功。"
+          },
+          "message": {
+            "type": "string",
+            "description": "返回的消息",
+            "nullable": true
+          },
+          "resultCode": {
+            "type": "integer",
+            "description": "返回的操作码",
+            "format": "int32"
+          },
+          "resultInt": {
+            "type": "integer",
+            "description": "返回的结果(int属性)ResultInt",
+            "format": "int32",
+            "nullable": true
+          },
+          "responseTime": {
+            "type": "string",
+            "description": "响应时间",
+            "format": "date-time"
+          },
+          "isFromCache": {
+            "type": "boolean",
+            "description": "是否来自缓存",
+            "nullable": true
+          },
+          "attribute01": {
+            "type": "string",
+            "description": "返回的自定义属性值",
+            "nullable": true
+          },
+          "attribute02": {
+            "type": "string",
+            "description": "返回的自定义属性值",
+            "nullable": true
+          },
+          "attributeInt01": {
+            "type": "integer",
+            "description": "返回的自定义属性值-int01",
+            "format": "int32",
+            "nullable": true
+          },
+          "attributeInt02": {
+            "type": "integer",
+            "description": "返回的自定义属性值-int 02",
+            "format": "int32",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ClustersGroupInfoUrlDto"
+            },
+            "description": "返回的自定义数据",
+            "nullable": true
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "每页显示记录",
+            "format": "int32"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "description": "当前页码",
+            "format": "int32"
+          },
+          "totalCount": {
+            "type": "integer",
+            "description": "总条数",
+            "format": "int32"
+          },
+          "totalPage": {
+            "type": "integer",
+            "description": "总页数",
+            "format": "int32",
+            "readOnly": true
+          },
+          "isPreviousPage": {
+            "type": "boolean",
+            "description": "是否有上一页",
+            "readOnly": true
+          },
+          "isNextPage": {
+            "type": "boolean",
+            "description": "是否有下一页",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "API返回的具有分页的实体。"
+      },
+      "ClustersGroupInfoUrlDtoIListPagedModel-API返回的具有分页的实体。": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean",
+            "description": "是否成功。"
+          },
+          "message": {
+            "type": "string",
+            "description": "返回的消息",
+            "nullable": true
+          },
+          "resultCode": {
+            "type": "integer",
+            "description": "返回的操作码",
+            "format": "int32"
+          },
+          "resultInt": {
+            "type": "integer",
+            "description": "返回的结果(int属性)ResultInt",
+            "format": "int32",
+            "nullable": true
+          },
+          "responseTime": {
+            "type": "string",
+            "description": "响应时间",
+            "format": "date-time"
+          },
+          "isFromCache": {
+            "type": "boolean",
+            "description": "是否来自缓存",
+            "nullable": true
+          },
+          "attribute01": {
+            "type": "string",
+            "description": "返回的自定义属性值",
+            "nullable": true
+          },
+          "attribute02": {
+            "type": "string",
+            "description": "返回的自定义属性值",
+            "nullable": true
+          },
+          "attributeInt01": {
+            "type": "integer",
+            "description": "返回的自定义属性值-int01",
+            "format": "int32",
+            "nullable": true
+          },
+          "attributeInt02": {
+            "type": "integer",
+            "description": "返回的自定义属性值-int 02",
+            "format": "int32",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ClustersGroupInfoUrlDto"
+            },
+            "description": "返回的自定义数据",
+            "nullable": true
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "每页显示记录",
+            "format": "int32"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "description": "当前页码",
+            "format": "int32"
+          },
+          "totalCount": {
+            "type": "integer",
+            "description": "总条数",
+            "format": "int32"
+          },
+          "totalPage": {
+            "type": "integer",
+            "description": "总页数",
+            "format": "int32",
+            "readOnly": true
+          },
+          "isPreviousPage": {
+            "type": "boolean",
+            "description": "是否有上一页",
+            "readOnly": true
+          },
+          "isNextPage": {
+            "type": "boolean",
+            "description": "是否有下一页",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "API返回的具有分页的实体。"
+      },
+      "DbMonitorTaskRecordModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "linkId": {
+            "type": "string",
+            "description": "任务配置ID",
+            "nullable": true
+          },
+          "systemCode": {
+            "type": "string",
+            "description": "系统ID",
+            "nullable": true
+          },
+          "computerRoomName": {
+            "type": "string",
+            "nullable": true
+          },
+          "clustersGroupId": {
+            "type": "string",
+            "description": "集群ID",
+            "nullable": true
+          },
+          "clustersGroupName": {
+            "type": "string",
+            "description": "集群名称",
+            "nullable": true
+          },
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataSource": {
+            "type": "string",
+            "description": "数据库地址",
+            "nullable": true
+          },
+          "initialCatalog": {
+            "type": "string",
+            "nullable": true
+          },
+          "execSQLComType": {
+            "type": "string",
+            "description": "任务类型",
+            "nullable": true
+          },
+          "dbServiceType": {
+            "type": "integer",
+            "description": "数据库类型",
+            "format": "int32"
+          },
+          "takeTimeMs": {
+            "type": "number",
+            "description": "数据库操作耗时，单位：毫秒",
+            "format": "double",
+            "readOnly": true
+          },
+          "port": {
+            "type": "integer",
+            "description": "数据库端口",
+            "format": "int32"
+          },
+          "connectTimeout": {
+            "type": "integer",
+            "description": "预设超时时间",
+            "format": "int32"
+          },
+          "commandTimeout": {
+            "type": "integer",
+            "description": "预设超时时间",
+            "format": "int32"
+          },
+          "execRate": {
+            "type": "integer",
+            "description": "执行频率",
+            "format": "int32"
+          },
+          "execSQL": {
+            "type": "string",
+            "description": "执行脚本",
+            "nullable": true
+          },
+          "cronExpression": {
+            "type": "string",
+            "description": "cron表达式。",
+            "nullable": true
+          },
+          "execStartTime": {
+            "type": "string",
+            "description": "执行开始时间",
+            "format": "date-time"
+          },
+          "execEndTime": {
+            "type": "string",
+            "description": "执行结束时间",
+            "format": "date-time"
+          },
+          "isError": {
+            "type": "integer",
+            "description": "是否出错",
+            "format": "int32"
+          },
+          "successCount": {
+            "type": "integer",
+            "description": "成功次数",
+            "format": "int32"
+          },
+          "errorCount": {
+            "type": "integer",
+            "description": "出错次数",
+            "format": "int32"
+          },
+          "resultMsgTitle": {
+            "type": "string",
+            "description": "返回的信息(标题)",
+            "nullable": true
+          },
+          "resultMsgSecond": {
+            "type": "string",
+            "description": "返回的信息(结果)",
+            "nullable": true
+          },
+          "threadId": {
+            "type": "string",
+            "description": "线程ID",
+            "nullable": true
+          },
+          "messageId": {
+            "type": "string",
+            "description": "发送邮件后，返回的消息ID",
+            "nullable": true
+          },
+          "jobName": {
+            "type": "string",
+            "description": "执行任务的 job 名字。",
+            "nullable": true
+          },
+          "remark": {
+            "type": "string",
+            "description": "备注",
+            "nullable": true
+          },
+          "createTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "description": "DB监控数据记录"
+      },
+      "DbMonitorTaskRecordModel-DB监控数据记录": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "linkId": {
+            "type": "string",
+            "description": "任务配置ID",
+            "nullable": true
+          },
+          "systemCode": {
+            "type": "string",
+            "description": "系统ID",
+            "nullable": true
+          },
+          "computerRoomName": {
+            "type": "string",
+            "nullable": true
+          },
+          "clustersGroupId": {
+            "type": "string",
+            "description": "集群ID",
+            "nullable": true
+          },
+          "clustersGroupName": {
+            "type": "string",
+            "description": "集群名称",
+            "nullable": true
+          },
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataSource": {
+            "type": "string",
+            "description": "数据库地址",
+            "nullable": true
+          },
+          "initialCatalog": {
+            "type": "string",
+            "nullable": true
+          },
+          "execSQLComType": {
+            "type": "string",
+            "description": "任务类型",
+            "nullable": true
+          },
+          "dbServiceType": {
+            "type": "integer",
+            "description": "数据库类型",
+            "format": "int32"
+          },
+          "takeTimeMs": {
+            "type": "number",
+            "description": "数据库操作耗时，单位：毫秒",
+            "format": "double",
+            "readOnly": true
+          },
+          "port": {
+            "type": "integer",
+            "description": "数据库端口",
+            "format": "int32"
+          },
+          "connectTimeout": {
+            "type": "integer",
+            "description": "预设超时时间",
+            "format": "int32"
+          },
+          "commandTimeout": {
+            "type": "integer",
+            "description": "预设超时时间",
+            "format": "int32"
+          },
+          "execRate": {
+            "type": "integer",
+            "description": "执行频率",
+            "format": "int32"
+          },
+          "execSQL": {
+            "type": "string",
+            "description": "执行脚本",
+            "nullable": true
+          },
+          "cronExpression": {
+            "type": "string",
+            "description": "cron表达式。",
+            "nullable": true
+          },
+          "execStartTime": {
+            "type": "string",
+            "description": "执行开始时间",
+            "format": "date-time"
+          },
+          "execEndTime": {
+            "type": "string",
+            "description": "执行结束时间",
+            "format": "date-time"
+          },
+          "isError": {
+            "type": "integer",
+            "description": "是否出错",
+            "format": "int32"
+          },
+          "successCount": {
+            "type": "integer",
+            "description": "成功次数",
+            "format": "int32"
+          },
+          "errorCount": {
+            "type": "integer",
+            "description": "出错次数",
+            "format": "int32"
+          },
+          "resultMsgTitle": {
+            "type": "string",
+            "description": "返回的信息(标题)",
+            "nullable": true
+          },
+          "resultMsgSecond": {
+            "type": "string",
+            "description": "返回的信息(结果)",
+            "nullable": true
+          },
+          "threadId": {
+            "type": "string",
+            "description": "线程ID",
+            "nullable": true
+          },
+          "messageId": {
+            "type": "string",
+            "description": "发送邮件后，返回的消息ID",
+            "nullable": true
+          },
+          "jobName": {
+            "type": "string",
+            "description": "执行任务的 job 名字。",
+            "nullable": true
+          },
+          "remark": {
+            "type": "string",
+            "description": "备注",
+            "nullable": true
+          },
+          "createTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "description": "DB监控数据记录"
+      },
+      "GetDBLinkConfigListRequest": {
+        "type": "object",
+        "properties": {
+          "procedureName": {
+            "type": "string",
+            "description": "存储过程名称",
+            "nullable": true
+          },
+          "passwordKey": {
+            "type": "string",
+            "description": "解密Key",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "获取监控列表-参数"
+      },
+      "GetDBLinkConfigListRequest-获取监控列表-参数": {
+        "type": "object",
+        "properties": {
+          "procedureName": {
+            "type": "string",
+            "description": "存储过程名称",
+            "nullable": true
+          },
+          "passwordKey": {
+            "type": "string",
+            "description": "解密Key",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "获取监控列表-参数"
+      },
+      "JobResultModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "主键",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "description": "执行状态。0：未知。1：成功。-1：超时。-2：出现异常",
+            "format": "int32"
+          },
+          "jobName": {
+            "type": "string",
+            "description": "job名称",
+            "nullable": true
+          },
+          "cronExpression": {
+            "type": "string",
+            "description": "Cron表达式",
+            "nullable": true
+          },
+          "groupId": {
+            "type": "string",
+            "description": "分组ID",
+            "nullable": true
+          },
+          "tasksTotalCount": {
+            "type": "integer",
+            "description": "总任务数",
+            "format": "int32"
+          },
+          "tasksFinishedCount": {
+            "type": "integer",
+            "description": "已完成的任务队列数",
+            "format": "int32"
+          },
+          "threadsOpenedCount": {
+            "type": "integer",
+            "description": "开启的线程数",
+            "format": "int32"
+          },
+          "threadsOpenedTimeMs": {
+            "type": "number",
+            "description": "开启的线程数-耗时",
+            "format": "double"
+          },
+          "threadsFinishedCount": {
+            "type": "integer",
+            "description": "已完成任务的线程数",
+            "format": "int32"
+          },
+          "execStartTime": {
+            "type": "string",
+            "description": "开始时间",
+            "format": "date-time"
+          },
+          "execEndTime": {
+            "type": "string",
+            "description": "结束时间",
+            "format": "date-time"
+          },
+          "takeTimeMs": {
+            "type": "number",
+            "description": "总耗时（毫秒）",
+            "format": "double"
+          },
+          "takeTimeMsAvg": {
+            "type": "number",
+            "description": "每任务平均耗时（毫秒）",
+            "format": "double"
+          },
+          "threadTaskCountAvg": {
+            "type": "number",
+            "description": "每线程执行的平均任务数",
+            "format": "double"
+          },
+          "threadPoolInfo": {
+            "type": "string",
+            "description": "线程池信息",
+            "nullable": true
+          },
+          "createTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "description": "作业执行结果的详细信息"
+      },
+      "JobResultModel-作业执行结果的详细信息": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "主键",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "description": "执行状态。0：未知。1：成功。-1：超时。-2：出现异常",
+            "format": "int32"
+          },
+          "jobName": {
+            "type": "string",
+            "description": "job名称",
+            "nullable": true
+          },
+          "cronExpression": {
+            "type": "string",
+            "description": "Cron表达式",
+            "nullable": true
+          },
+          "groupId": {
+            "type": "string",
+            "description": "分组ID",
+            "nullable": true
+          },
+          "tasksTotalCount": {
+            "type": "integer",
+            "description": "总任务数",
+            "format": "int32"
+          },
+          "tasksFinishedCount": {
+            "type": "integer",
+            "description": "已完成的任务队列数",
+            "format": "int32"
+          },
+          "threadsOpenedCount": {
+            "type": "integer",
+            "description": "开启的线程数",
+            "format": "int32"
+          },
+          "threadsOpenedTimeMs": {
+            "type": "number",
+            "description": "开启的线程数-耗时",
+            "format": "double"
+          },
+          "threadsFinishedCount": {
+            "type": "integer",
+            "description": "已完成任务的线程数",
+            "format": "int32"
+          },
+          "execStartTime": {
+            "type": "string",
+            "description": "开始时间",
+            "format": "date-time"
+          },
+          "execEndTime": {
+            "type": "string",
+            "description": "结束时间",
+            "format": "date-time"
+          },
+          "takeTimeMs": {
+            "type": "number",
+            "description": "总耗时（毫秒）",
+            "format": "double"
+          },
+          "takeTimeMsAvg": {
+            "type": "number",
+            "description": "每任务平均耗时（毫秒）",
+            "format": "double"
+          },
+          "threadTaskCountAvg": {
+            "type": "number",
+            "description": "每线程执行的平均任务数",
+            "format": "double"
+          },
+          "threadPoolInfo": {
+            "type": "string",
+            "description": "线程池信息",
+            "nullable": true
+          },
+          "createTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "description": "作业执行结果的详细信息"
+      },
+      "KvInfoData": {
+        "type": "object",
+        "properties": {
+          "kvDecimalList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/KvInfoDecimalModel"
+            },
+            "description": "kv 数据",
+            "nullable": true
+          },
+          "kvStrList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/KvInfoStrModel"
+            },
+            "description": "kv 数据",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "kv 数据"
+      },
+      "KvInfoData-kv 数据": {
+        "type": "object",
+        "properties": {
+          "kvDecimalList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/KvInfoDecimalModel"
+            },
+            "description": "kv 数据",
+            "nullable": true
+          },
+          "kvStrList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/KvInfoStrModel"
+            },
+            "description": "kv 数据",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "kv 数据"
+      },
+      "KvInfoDecimalModel": {
+        "type": "object",
+        "properties": {
+          "itemId": {
+            "type": "integer",
+            "description": "项的ID",
+            "format": "int32"
+          },
+          "infoTime": {
+            "type": "string",
+            "description": "记录时间",
+            "format": "date-time"
+          },
+          "value": {
+            "type": "number",
+            "description": "值",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "KvInfoStrModel": {
+        "type": "object",
+        "properties": {
+          "itemId": {
+            "type": "integer",
+            "description": "项的ID",
+            "format": "int32"
+          },
+          "infoTime": {
+            "type": "string",
+            "description": "记录时间",
+            "format": "date-time"
+          },
+          "value": {
+            "type": "string",
+            "description": "值",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ServerBasicInfo2Dto": {
+        "type": "object",
+        "properties": {
+          "rowNumber": {
+            "type": "integer",
+            "description": "序号",
+            "format": "int32"
+          },
+          "serverId": {
+            "type": "string",
+            "description": "主机ID",
+            "nullable": true
+          },
+          "serverInstanceName": {
+            "type": "string",
+            "description": "实例名称",
+            "nullable": true
+          },
+          "serverIp": {
+            "type": "string",
+            "description": "实例IP",
+            "nullable": true
+          },
+          "serverIpProxy": {
+            "type": "string",
+            "description": "实例IP（代理）",
+            "nullable": true
+          },
+          "serverPort": {
+            "type": "string",
+            "description": "实例端口",
+            "nullable": true
+          },
+          "computerRoomNameOfServer": {
+            "type": "string",
+            "description": "实例-机房名称",
+            "nullable": true
+          },
+          "cpuDisplayName": {
+            "type": "string",
+            "description": "CPU-显示名称",
+            "nullable": true,
+            "readOnly": true
+          },
+          "cpuCount": {
+            "type": "integer",
+            "description": "CPU核心数",
+            "format": "int32"
+          },
+          "hyperthreadRatio": {
+            "type": "integer",
+            "description": "CPU比率",
+            "format": "int32"
+          },
+          "physicalMemoryTotalGB": {
+            "type": "number",
+            "description": "实例物理内存-GB.",
+            "format": "double",
+            "readOnly": true
+          },
+          "physicalMemoryTotal": {
+            "type": "integer",
+            "description": "内存-字节.",
+            "format": "int64"
+          },
+          "maxConnections": {
+            "type": "integer",
+            "description": "最大链接数",
+            "format": "int32"
+          },
+          "dbServiceTypeNameOfServer": {
+            "type": "string",
+            "description": "实例-DB类型",
+            "nullable": true
+          },
+          "clustersGroupId": {
+            "type": "string",
+            "description": "集群ID",
+            "nullable": true
+          },
+          "clustersGroupName": {
+            "type": "string",
+            "description": "集群名称",
+            "nullable": true
+          },
+          "computerRoomNameOfCluster": {
+            "type": "string",
+            "description": "集群-机房名称",
+            "nullable": true
+          },
+          "clustersAGURL": {
+            "type": "string",
+            "description": "集群-访问域名",
+            "nullable": true
+          },
+          "clustersAGVIP": {
+            "type": "string",
+            "description": "集群-访问IP",
+            "nullable": true
+          },
+          "createTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          },
+          "updateTime": {
+            "type": "string",
+            "description": "修改时间",
+            "format": "date-time"
+          },
+          "environmentName": {
+            "type": "string",
+            "nullable": true
+          },
+          "clustersAGVIPProxy": {
+            "type": "string",
+            "nullable": true
+          },
+          "clusterPort": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "clusterPortProxy": {
+            "type": "string",
+            "nullable": true
+          },
+          "levelImpt": {
+            "type": "string",
+            "nullable": true
+          },
+          "isHasServer": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isMySQLSlave": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isRealServer": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "committedMemoryTarget": {
+            "type": "integer",
+            "description": "服务配置内存(字节)",
+            "format": "int64"
+          },
+          "committedMemoryTargetGB": {
+            "type": "number",
+            "description": "服务配置内存(GB)",
+            "format": "double",
+            "readOnly": true
+          },
+          "serviceStartTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "cloudInstanceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "serverTimeZone": {
+            "type": "string",
+            "nullable": true
+          },
+          "serviceTimeZone": {
+            "type": "string",
+            "nullable": true
+          },
+          "serviceVersion": {
+            "type": "string",
+            "nullable": true
+          },
+          "longQueryMaxTime": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "serverDataStatus": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "execFailCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "execSuccessCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lastExecTimeMin": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastExecTimeMax": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "taskCount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ServerBasicInfo2DtoIListPagedModel": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean",
+            "description": "是否成功。"
+          },
+          "message": {
+            "type": "string",
+            "description": "返回的消息",
+            "nullable": true
+          },
+          "resultCode": {
+            "type": "integer",
+            "description": "返回的操作码",
+            "format": "int32"
+          },
+          "resultInt": {
+            "type": "integer",
+            "description": "返回的结果(int属性)ResultInt",
+            "format": "int32",
+            "nullable": true
+          },
+          "responseTime": {
+            "type": "string",
+            "description": "响应时间",
+            "format": "date-time"
+          },
+          "isFromCache": {
+            "type": "boolean",
+            "description": "是否来自缓存",
+            "nullable": true
+          },
+          "attribute01": {
+            "type": "string",
+            "description": "返回的自定义属性值",
+            "nullable": true
+          },
+          "attribute02": {
+            "type": "string",
+            "description": "返回的自定义属性值",
+            "nullable": true
+          },
+          "attributeInt01": {
+            "type": "integer",
+            "description": "返回的自定义属性值-int01",
+            "format": "int32",
+            "nullable": true
+          },
+          "attributeInt02": {
+            "type": "integer",
+            "description": "返回的自定义属性值-int 02",
+            "format": "int32",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ServerBasicInfo2Dto"
+            },
+            "description": "返回的自定义数据",
+            "nullable": true
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "每页显示记录",
+            "format": "int32"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "description": "当前页码",
+            "format": "int32"
+          },
+          "totalCount": {
+            "type": "integer",
+            "description": "总条数",
+            "format": "int32"
+          },
+          "totalPage": {
+            "type": "integer",
+            "description": "总页数",
+            "format": "int32",
+            "readOnly": true
+          },
+          "isPreviousPage": {
+            "type": "boolean",
+            "description": "是否有上一页",
+            "readOnly": true
+          },
+          "isNextPage": {
+            "type": "boolean",
+            "description": "是否有下一页",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "API返回的具有分页的实体。"
+      },
+      "ServerBasicInfo2DtoIListPagedModel-API返回的具有分页的实体。": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean",
+            "description": "是否成功。"
+          },
+          "message": {
+            "type": "string",
+            "description": "返回的消息",
+            "nullable": true
+          },
+          "resultCode": {
+            "type": "integer",
+            "description": "返回的操作码",
+            "format": "int32"
+          },
+          "resultInt": {
+            "type": "integer",
+            "description": "返回的结果(int属性)ResultInt",
+            "format": "int32",
+            "nullable": true
+          },
+          "responseTime": {
+            "type": "string",
+            "description": "响应时间",
+            "format": "date-time"
+          },
+          "isFromCache": {
+            "type": "boolean",
+            "description": "是否来自缓存",
+            "nullable": true
+          },
+          "attribute01": {
+            "type": "string",
+            "description": "返回的自定义属性值",
+            "nullable": true
+          },
+          "attribute02": {
+            "type": "string",
+            "description": "返回的自定义属性值",
+            "nullable": true
+          },
+          "attributeInt01": {
+            "type": "integer",
+            "description": "返回的自定义属性值-int01",
+            "format": "int32",
+            "nullable": true
+          },
+          "attributeInt02": {
+            "type": "integer",
+            "description": "返回的自定义属性值-int 02",
+            "format": "int32",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ServerBasicInfo2Dto"
+            },
+            "description": "返回的自定义数据",
+            "nullable": true
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "每页显示记录",
+            "format": "int32"
+          },
+          "pageIndex": {
+            "type": "integer",
+            "description": "当前页码",
+            "format": "int32"
+          },
+          "totalCount": {
+            "type": "integer",
+            "description": "总条数",
+            "format": "int32"
+          },
+          "totalPage": {
+            "type": "integer",
+            "description": "总页数",
+            "format": "int32",
+            "readOnly": true
+          },
+          "isPreviousPage": {
+            "type": "boolean",
+            "description": "是否有上一页",
+            "readOnly": true
+          },
+          "isNextPage": {
+            "type": "boolean",
+            "description": "是否有下一页",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "API返回的具有分页的实体。"
+      },
+      "ServerBasicInfoSPDto": {
+        "type": "object",
+        "properties": {
+          "search": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "查询条件(多字段查找：集群名称、机房、库名等)",
+            "nullable": true
+          },
+          "pageIndex": {
+            "type": "integer",
+            "description": "页码",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "每页大小",
+            "format": "int32"
+          },
+          "cloudServiceType": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "云服务类型",
+            "nullable": true
+          },
+          "dbServiceType": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "服务类型",
+            "nullable": true
+          },
+          "startCreateTime": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "开始时间",
+            "nullable": true
+          },
+          "endCreateTime": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "结束时间",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "查询条件(SelectParameter)Dto"
+      },
+      "ServerBasicInfoSPDto-查询条件(SelectParameter)Dto": {
+        "type": "object",
+        "properties": {
+          "search": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "查询条件(多字段查找：集群名称、机房、库名等)",
+            "nullable": true
+          },
+          "pageIndex": {
+            "type": "integer",
+            "description": "页码",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "每页大小",
+            "format": "int32"
+          },
+          "cloudServiceType": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "云服务类型",
+            "nullable": true
+          },
+          "dbServiceType": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "服务类型",
+            "nullable": true
+          },
+          "startCreateTime": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "开始时间",
+            "nullable": true
+          },
+          "endCreateTime": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "结束时间",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "查询条件(SelectParameter)Dto"
+      },
+      "ServiceResult": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean",
+            "description": "是否成功。"
+          },
+          "message": {
+            "type": "string",
+            "description": "返回的消息",
+            "nullable": true
+          },
+          "resultCode": {
+            "type": "integer",
+            "description": "返回的操作码",
+            "format": "int32"
+          },
+          "resultInt": {
+            "type": "integer",
+            "description": "返回的结果(int属性)ResultInt",
+            "format": "int32",
+            "nullable": true
+          },
+          "responseTime": {
+            "type": "string",
+            "description": "响应时间",
+            "format": "date-time"
+          },
+          "isFromCache": {
+            "type": "boolean",
+            "description": "是否来自缓存",
+            "nullable": true
+          },
+          "attribute01": {
+            "type": "string",
+            "description": "返回的自定义属性值",
+            "nullable": true
+          },
+          "attribute02": {
+            "type": "string",
+            "description": "返回的自定义属性值",
+            "nullable": true
+          },
+          "attributeInt01": {
+            "type": "integer",
+            "description": "返回的自定义属性值-int01",
+            "format": "int32",
+            "nullable": true
+          },
+          "attributeInt02": {
+            "type": "integer",
+            "description": "返回的自定义属性值-int 02",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "服务通用返回结果"
+      },
+      "ServiceResult-服务通用返回结果": {
+        "type": "object",
+        "properties": {
+          "isSuccess": {
+            "type": "boolean",
+            "description": "是否成功。"
+          },
+          "message": {
+            "type": "string",
+            "description": "返回的消息",
+            "nullable": true
+          },
+          "resultCode": {
+            "type": "integer",
+            "description": "返回的操作码",
+            "format": "int32"
+          },
+          "resultInt": {
+            "type": "integer",
+            "description": "返回的结果(int属性)ResultInt",
+            "format": "int32",
+            "nullable": true
+          },
+          "responseTime": {
+            "type": "string",
+            "description": "响应时间",
+            "format": "date-time"
+          },
+          "isFromCache": {
+            "type": "boolean",
+            "description": "是否来自缓存",
+            "nullable": true
+          },
+          "attribute01": {
+            "type": "string",
+            "description": "返回的自定义属性值",
+            "nullable": true
+          },
+          "attribute02": {
+            "type": "string",
+            "description": "返回的自定义属性值",
+            "nullable": true
+          },
+          "attributeInt01": {
+            "type": "integer",
+            "description": "返回的自定义属性值-int01",
+            "format": "int32",
+            "nullable": true
+          },
+          "attributeInt02": {
+            "type": "integer",
+            "description": "返回的自定义属性值-int 02",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "服务通用返回结果"
+      },
+      "StringObjectIDictionaryDBMonitorTaskCommonExecuteForSqlData": {
+        "type": "object",
+        "properties": {
+          "sql": {
+            "type": "string",
+            "nullable": true
+          },
+          "paramList": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": { }
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": ""
+      },
+      "UpdateExecInfoRequest": {
+        "type": "object",
+        "properties": {
+          "taskId": {
+            "type": "string",
+            "description": "db link id",
+            "nullable": true
+          },
+          "lastExecTime": {
+            "type": "string",
+            "description": "最后一次执行时间",
+            "format": "date-time"
+          },
+          "isSuccessExec": {
+            "type": "boolean",
+            "description": "是否成功执行"
+          },
+          "isSendSuccessMsg": {
+            "type": "boolean",
+            "description": "是否发送了消息-成功的"
+          },
+          "isSendFailMsg": {
+            "type": "boolean",
+            "description": "是否发送了消息-失败的"
+          },
+          "execSuccessCount": {
+            "type": "integer",
+            "description": "成功执行的次数",
+            "format": "int32",
+            "readOnly": true
+          },
+          "execFailCount": {
+            "type": "integer",
+            "description": "失败执行的次数",
+            "format": "int32",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "更新任务参数实体"
+      },
+      "UpdateExecInfoRequest-更新任务参数实体": {
+        "type": "object",
+        "properties": {
+          "taskId": {
+            "type": "string",
+            "description": "db link id",
+            "nullable": true
+          },
+          "lastExecTime": {
+            "type": "string",
+            "description": "最后一次执行时间",
+            "format": "date-time"
+          },
+          "isSuccessExec": {
+            "type": "boolean",
+            "description": "是否成功执行"
+          },
+          "isSendSuccessMsg": {
+            "type": "boolean",
+            "description": "是否发送了消息-成功的"
+          },
+          "isSendFailMsg": {
+            "type": "boolean",
+            "description": "是否发送了消息-失败的"
+          },
+          "execSuccessCount": {
+            "type": "integer",
+            "description": "成功执行的次数",
+            "format": "int32",
+            "readOnly": true
+          },
+          "execFailCount": {
+            "type": "integer",
+            "description": "失败执行的次数",
+            "format": "int32",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "更新任务参数实体"
+      },
+      "UserModel": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "description": "用户ID",
+            "nullable": true
+          },
+          "userLoginName": {
+            "type": "string",
+            "description": "登陆账号",
+            "nullable": true
+          },
+          "pwd": {
+            "type": "string",
+            "description": "密码",
+            "nullable": true
+          },
+          "userNickName": {
+            "type": "string",
+            "description": "昵称",
+            "nullable": true
+          },
+          "userPhone": {
+            "type": "string",
+            "description": "电话",
+            "nullable": true
+          },
+          "userMail": {
+            "type": "string",
+            "description": "邮件",
+            "nullable": true
+          },
+          "companyId": {
+            "type": "string",
+            "description": "公司ID",
+            "nullable": true
+          },
+          "dataStatus": {
+            "type": "integer",
+            "description": "状态，1表示正常，0表示禁用",
+            "format": "int32"
+          },
+          "isAdmin": {
+            "type": "integer",
+            "description": "是否管理员",
+            "format": "int32"
+          },
+          "createTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          },
+          "updateTime": {
+            "type": "string",
+            "description": "修改时间，每次数据更新时自动更新此时间戳",
+            "format": "date-time"
+          },
+          "accessKeyId": {
+            "type": "string",
+            "description": "用户AccessKeyId(当前登陆用户的)",
+            "nullable": true
+          },
+          "permissionsList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UsersAccessPermissionsModel"
+            },
+            "description": "用户的权限",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "用户信息"
+      },
+      "UserModel-用户信息": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "description": "用户ID",
+            "nullable": true
+          },
+          "userLoginName": {
+            "type": "string",
+            "description": "登陆账号",
+            "nullable": true
+          },
+          "pwd": {
+            "type": "string",
+            "description": "密码",
+            "nullable": true
+          },
+          "userNickName": {
+            "type": "string",
+            "description": "昵称",
+            "nullable": true
+          },
+          "userPhone": {
+            "type": "string",
+            "description": "电话",
+            "nullable": true
+          },
+          "userMail": {
+            "type": "string",
+            "description": "邮件",
+            "nullable": true
+          },
+          "companyId": {
+            "type": "string",
+            "description": "公司ID",
+            "nullable": true
+          },
+          "dataStatus": {
+            "type": "integer",
+            "description": "状态，1表示正常，0表示禁用",
+            "format": "int32"
+          },
+          "isAdmin": {
+            "type": "integer",
+            "description": "是否管理员",
+            "format": "int32"
+          },
+          "createTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          },
+          "updateTime": {
+            "type": "string",
+            "description": "修改时间，每次数据更新时自动更新此时间戳",
+            "format": "date-time"
+          },
+          "accessKeyId": {
+            "type": "string",
+            "description": "用户AccessKeyId(当前登陆用户的)",
+            "nullable": true
+          },
+          "permissionsList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UsersAccessPermissionsModel"
+            },
+            "description": "用户的权限",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "用户信息"
+      },
+      "UsersAccessPermissionsModel": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "description": "用户ID",
+            "nullable": true
+          },
+          "permissionId": {
+            "type": "string",
+            "description": "权限ID",
+            "nullable": true
+          },
+          "permissionCode": {
+            "type": "string",
+            "description": "允许的权限编码",
+            "nullable": true
+          },
+          "dataStatus": {
+            "type": "integer",
+            "description": "状态，1表示正常，0表示禁用",
+            "format": "int32"
+          },
+          "createTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          },
+          "updateTime": {
+            "type": "string",
+            "description": "修改时间，每次数据更新时自动更新此时间戳",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "description": "用户权限信息"
+      },
+      "UsersAccessPermissionsModel-用户权限信息": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "description": "用户ID",
+            "nullable": true
+          },
+          "permissionId": {
+            "type": "string",
+            "description": "权限ID",
+            "nullable": true
+          },
+          "permissionCode": {
+            "type": "string",
+            "description": "允许的权限编码",
+            "nullable": true
+          },
+          "dataStatus": {
+            "type": "integer",
+            "description": "状态，1表示正常，0表示禁用",
+            "format": "int32"
+          },
+          "createTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          },
+          "updateTime": {
+            "type": "string",
+            "description": "修改时间，每次数据更新时自动更新此时间戳",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "description": "用户权限信息"
+      },
+      "WeatherForecast": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "temperatureC": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "temperatureF": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "summary": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "请输入token,格式为 Bearer xxxxxxxx（注意中间必须有空格）",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ],
+  "tags": [
+    {
+      "name": "ClustersGroupInfo",
+      "description": "DB集群信息"
+    },
+    {
+      "name": "DataArchive",
+      "description": "数据归档控制器"
+    },
+    {
+      "name": "DbMonitorRecord",
+      "description": "监控日志"
+    },
+    {
+      "name": "DBMonitorTaskCommon",
+      "description": "DB监控任务-公共"
+    },
+    {
+      "name": "DbMonitorTask",
+      "description": "监控任务"
+    },
+    {
+      "name": "Home",
+      "description": "首页"
+    },
+    {
+      "name": "JobResult",
+      "description": "定时任务执行日志"
+    },
+    {
+      "name": "KVInfo",
+      "description": "键值队信息"
+    },
+    {
+      "name": "ServerBasicInfo",
+      "description": "DB服务的基础信息"
+    },
+    {
+      "name": "Users",
+      "description": "用户体系dd"
+    }
+  ]
+}
