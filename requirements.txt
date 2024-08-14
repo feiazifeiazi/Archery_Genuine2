@@ -45,5 +45,4 @@ cassandra-driver
 httpx
 OpenAI
 elasticsearch==8.14.0
-
 opensearch_py==2.6.0
