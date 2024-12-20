@@ -25,10 +25,24 @@ def data_masking(instance, db_name, sql, sql_result):
             if token.ttype is Keyword and token.value.upper() in ["UNION", "UNION ALL"]:
                 keywords_count["UNION"] = keywords_count.get("UNION", 0) + 1
         # 通过goInception获取select list
-        inception_engine = GoInceptionEngine()
-        select_list = inception_engine.query_data_masking(
-            instance=instance, db_name=db_name, sql=sql
-        )
+        if instance.db_type == "mongo":
+            select_list = [
+                {
+                    "index": index,
+                    "field": field,
+                    "type": "varchar",
+                    "table": "*",
+                    "schema": db_name,
+                    "alias": field,
+                }
+                for index, field in enumerate(sql_result.column_list)
+            ]
+        else:
+            inception_engine = GoInceptionEngine()
+            select_list = inception_engine.query_data_masking(
+                instance=instance, db_name=db_name, sql=sql
+            )
+
         # 如果UNION存在，那么调用去重函数
         select_list = (
             del_repeat(select_list, keywords_count) if keywords_count else select_list
@@ -40,36 +54,53 @@ def data_masking(instance, db_name, sql, sql_result):
         masking_rules = {
             i.rule_type: model_to_dict(i) for i in DataMaskingRules.objects.all()
         }
-        if hit_columns and sql_result.rows:
-            rows = list(sql_result.rows)
-            for column in hit_columns:
-                index, rule_type = column["index"], column["rule_type"]
-                masking_rule = masking_rules.get(rule_type)
-                # 如果是默认的三段式通用脱敏规则，数据库没有查询结果，则创建一个对象。
-                if not masking_rule and rule_type == 100:
-                    masking_rule_obj, created = DataMaskingRules.objects.get_or_create(
-                        rule_type=100,
-                        rule_regex="^([\\s\\S]{0,}?)([\\s\\S]{0,}?)([\\s\\S]{0,}?)$",
-                        hide_group=2,
-                        rule_desc="三段式通用脱敏规则：内部实现，正则暂不支持修改，隐藏组支持修改。",
-                    )
-                    if created:
-                        masking_rule = model_to_dict(masking_rule_obj)
-                        masking_rules[rule_type] = masking_rule  # 更新字典
-                        masking_rule = masking_rules.get(rule_type)
-                if not masking_rule:
-                    continue
-                for idx, item in enumerate(rows):
-                    rows[idx] = list(item)
-                    rows[idx][index] = regex(masking_rule, rows[idx][index])
-                sql_result.rows = rows
-            # 脱敏结果
-            sql_result.is_masked = True
+        apply_masking_rules(sql_result, hit_columns, masking_rules)
     except Exception as msg:
         logger.warning(f"数据脱敏异常，错误信息：{traceback.format_exc()}")
         sql_result.error = str(msg)
         sql_result.status = 1
     return sql_result
+
+
+@staticmethod
+def apply_masking_rules(sql_result, hit_columns, masking_rules):
+    """
+    该方法对 SQL 查询结果中的特定列应用脱敏规则，修改匹配的列数据。
+
+    参数:
+        sql_result (SqlResult): 包含查询结果的对象，具有 rows 属性，表示查询的行数据。
+        hit_columns (list): 列表，包含需要应用脱敏规则的列信息，每个元素是一个字典，
+                            包含 'index' (列的索引) 和 'rule_type' (脱敏规则类型)。
+        masking_rules (dict): 字典，包含脱敏规则的映射，规则类型作为键，规则定义作为值。
+
+    返回:
+        None: 该方法会直接修改 sql_result 对象的 rows 数据，脱敏后的数据将更新到该对象中。
+    """
+    if hit_columns and sql_result.rows:
+        rows = list(sql_result.rows)
+        for column in hit_columns:
+            index, rule_type = column["index"], column["rule_type"]
+            masking_rule = masking_rules.get(rule_type)
+            # 如果是默认的三段式通用脱敏规则，数据库没有查询结果，则创建一个对象。
+            if not masking_rule and rule_type == 100:
+                masking_rule_obj, created = DataMaskingRules.objects.get_or_create(
+                    rule_type=100,
+                    rule_regex="^([\\s\\S]{0,}?)([\\s\\S]{0,}?)([\\s\\S]{0,}?)$",
+                    hide_group=2,
+                    rule_desc="三段式通用脱敏规则：内部实现，正则暂不支持修改，隐藏组支持修改。",
+                )
+                if created:
+                    masking_rule = model_to_dict(masking_rule_obj)
+                    masking_rules[rule_type] = masking_rule  # 更新字典
+                    masking_rule = masking_rules.get(rule_type)
+            if not masking_rule:
+                continue
+            for idx, item in enumerate(rows):
+                rows[idx] = list(item)
+                rows[idx][index] = regex(masking_rule, rows[idx][index])
+            sql_result.rows = rows
+            # 脱敏结果
+        sql_result.is_masked = True
 
 
 def del_repeat(select_list, keywords_count):

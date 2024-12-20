@@ -15,6 +15,8 @@ from dateutil.parser import parse
 from bson.objectid import ObjectId
 from bson.int64 import Int64
 
+from sql.utils.data_masking import data_masking
+
 from . import EngineBase
 from .models import ResultSet, ReviewSet, ReviewResult
 from common.config import SysConfig
@@ -1422,3 +1424,20 @@ class MongoEngine(EngineBase):
         except Exception as e:
             exec_result.error = str(e)
         return exec_result
+
+    def query_masking(self, db_name=None, sql="", resultset=None):
+        """传入 sql语句, db名, 结果集,
+        返回一个脱敏后的结果集"""
+        mask_result = data_masking(self.instance, db_name, sql, resultset)
+        if resultset.is_masked:
+            rows = resultset.rows
+            for idx, row in enumerate(resultset.rows):
+                # 将除了第一个元素以外的所有元素转为 JSON
+                json_data = json.dumps(
+                    row[1:], ensure_ascii=False, indent=2, separators=(",", ":")
+                )
+                # 用转换后的 JSON 替换原来整个行的内容
+                rows[idx] = (row[0], json_data) + row[1:]
+            resultset.rows = rows  # 更新 SQL 查询结果的行数据
+
+        return mask_result
